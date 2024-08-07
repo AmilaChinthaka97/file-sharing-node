@@ -1,0 +1,15 @@
+services:
+  node-backend:
+    build:
+      context: ./file-sharing-client/
+    ports:
+      - "8081:8081"
+    network_mode: host
+
+  node-frontend:
+    build:
+      context: ./distributed-content-search/distributed-content-search/
+    ports:
+      - "3000:80"
+    environment:
+      REACT_APP_API_BASE_URL : http://localhost:8081
